@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Navbar from './components/layout/navbar';
+import Index from './components/layout/index';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Provider } from './context';
+import Lyrics from './components/tracks/lyrics';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Provider>
+        <BrowserRouter>
+          <React.Fragment>
+            <Navbar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Index} />
+                <Route path="/lyrics/track/:id" component={Lyrics} />
+              </Switch>
+            </div>
+          </React.Fragment>
+        </BrowserRouter>
+      </Provider>
+    );
+  }
 }
 
 export default App;
