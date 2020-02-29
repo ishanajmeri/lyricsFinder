@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from './context';
 import Lyrics from './components/tracks/lyrics';
 import './App.css';
+
 class App extends Component {
   render() {
     return (
