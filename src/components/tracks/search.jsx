@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Consumer } from '../../context';
-import { Card, Row } from 'antd';
+import { Card, Row, Button, Form, Input } from 'antd';
 import { SoundOutlined } from '@ant-design/icons';
 
 class Search extends Component {
   state = { trackTitle: '' };
 
   findTrack = (dispatch, e) => {
-    e.preventDefault();
+    console.log('object,yes');
+    // e.preventDefault();
     axios
       .get(
         `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${this.state.trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=ca6d2aabe958e410ddeb0ce3935f076d `
@@ -39,21 +40,22 @@ class Search extends Component {
                   <h1> Search For A Song</h1>
                 </Row>
                 <Row justify="center">
-                  <p>Get the lyrics for any song...</p>
+                  <p>Get the lyrics for any song</p>
                 </Row>
-                <form onSubmit={this.findTrack.bind(this, dispatch)}>
-                  <div>
-                    <input
+                <Form onFinish={this.findTrack.bind(this, dispatch)}>
+                  <Form.Item>
+                    <Input
                       type="text"
-                      className="form-control form-control-lg"
                       placeholder="song title.."
                       name="trackTitle"
                       value={this.state.trackTitle}
                       onChange={this.onChange}
                     />
-                  </div>
-                  <button type="submit">Get Track Lyrics</button>
-                </form>
+                  </Form.Item>
+                  <Button type="primary" htmlType="submit">
+                    Get Track Lyrics
+                  </Button>
+                </Form>
               </div>
             );
           }}

@@ -6,6 +6,7 @@ import { Provider } from './context';
 import Lyrics from './components/tracks/lyrics';
 import { Layout, Card } from 'antd';
 import './App.css';
+
 const { Header, Content, Footer } = Layout;
 class App extends Component {
   render() {
