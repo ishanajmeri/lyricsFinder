@@ -1,10 +1,18 @@
 import React from 'react';
-
+import { Layout, Row, Col, Typography } from 'antd';
+const { Header } = Layout;
+const { Text } = Typography;
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-dark bg-dark mb-s">
-      <span className="navbar-brand mb-0 h1 mx-auto">LyricFinder</span>
-    </nav>
+    <Header>
+      <Row justify="center">
+        <Col>
+          <Text strong style={{ fontSize: '19px' }}>
+            LyricsFinder
+          </Text>
+        </Col>
+      </Row>
+    </Header>
   );
 };
 
