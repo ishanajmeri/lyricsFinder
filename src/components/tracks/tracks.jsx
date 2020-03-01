@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
 import Track from './track';
-import { SyncOutlined } from '@ant-design/icons';
 import { Card, Typography, Row } from 'antd';
 
 const { Title } = Typography;
@@ -14,16 +13,7 @@ class Tracks extends Component {
           {value => {
             const { track_list, heading } = value;
             if (track_list === undefined || track_list.length === 0) {
-              return (
-                <SyncOutlined
-                  style={{
-                    padding: '160px',
-                    fontSize: '50px',
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                />
-              );
+              return;
             } else {
               return (
                 <React.Fragment>
