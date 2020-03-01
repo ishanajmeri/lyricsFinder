@@ -37,6 +37,102 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## About App
+
+This app is mainly created in admiration of the learning of **context component** of the reactJs.
+
+- libaray used in it:
+
+1. axios
+2. ant-design
+3. react-router-dom
+
+## axious
+
+- To get data from backend in Lifecycle Hooks i.e
+
+```js
+componentDidMount(){
+  const promis = axios.get('url')
+}
+```
+
+- requests of axios
+
+```js
+axios
+  .get('url')
+  .then(function(respose) {
+    //handle success
+  })
+  .catch(function(error) {
+    //handle errors
+  });
+```
+
+## context or context API
+
+- React's context allows you to share information to any components, without any help of props.
+- Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+### Create file of context.jsx in root path
+
+- context component:
+
+```js
+const Context = React.createContext();
+```
+
+- There are two export component :
+
+1. class Provider
+
+For adding in root file App.js  
+Changing state by using the dispatch redux property
+
+```js
+export class Provider extends Component{
+  state={
+    data:[]
+    dispatch:action => this.setState(state => reducer(state,action)) // you have to define or use this element in other file with the same 'type' component in it and after that help of payload we can change the state.
+  };
+  componentDidMound(){
+    //if you want ot change state in file by 'setState'
+  }
+  render(){
+    return (
+      <Context.Provider value={this.state}>
+      {this.props.childern}
+      </Context.Provider>
+    );
+  }
+}
+```
+
+**reducer** component:
+
+```js
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'objcet_in_type':
+      return {
+        ...state,
+        data: action.payload // payload is the change data that comes from the another file where the 'Consumer' used.
+      };
+    default:
+      return state;
+  }
+};
+```
+
+2. const Consumer
+
+For adding in file where we can use the states or values that provide by the provider.
+
+```js
+export const Consumer = Context.Consumer;
+```
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
