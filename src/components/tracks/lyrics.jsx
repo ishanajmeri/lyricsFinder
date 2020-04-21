@@ -5,7 +5,7 @@ import { Card } from 'antd';
 class Lyrics extends Component {
   state = {
     track: {},
-    lyrics: {}
+    lyrics: {},
   };
 
   componentDidMount() {
@@ -13,21 +13,22 @@ class Lyrics extends Component {
       .get(
         `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${this.props.match.params.id}&apikey=ca6d2aabe958e410ddeb0ce3935f076d `
       )
-      .then(res => {
+      .then((res) => {
         this.setState({ lyrics: res.data.message.body.lyrics });
 
         return axios.get(
           `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.get?track_id=${this.props.match.params.id}&apikey=ca6d2aabe958e410ddeb0ce3935f076d `
         );
       })
-      .then(res => {
+      .then((res) => {
         this.setState({ track: res.data.message.body.track });
       })
-      .catch(err => console.log(err), 'catch');
+      .catch((err) => console.log(err), 'catch');
   }
   render() {
-    // console.log(this.props, 'lyrics');
+    console.log(this.props, 'lyrics');
     const { track, lyrics } = this.state;
+    // console.log(track, 'track', lyrics, 'lyrics');
     if (
       track === undefined ||
       lyrics === undefined ||

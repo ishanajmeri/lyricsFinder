@@ -10,10 +10,10 @@ class Tracks extends Component {
     return (
       <div>
         <Consumer>
-          {value => {
+          {(value) => {
             const { track_list, heading } = value;
             if (track_list === undefined || track_list.length === 0) {
-              return;
+              return <h1>nothing</h1>;
             } else {
               return (
                 <React.Fragment>
@@ -22,7 +22,7 @@ class Tracks extends Component {
                       {heading}
                     </Title>
                     <Row>
-                      {track_list.map(item => (
+                      {track_list.map((item) => (
                         <Track key={item.track.track_id} track={item.track} />
                       ))}
                     </Row>
