@@ -8,30 +8,32 @@ class Search extends Component {
   state = { trackTitle: '' };
 
   findTrack = (dispatch, e) => {
-    console.log('object,yes');
+    console.log(dispatch, 'dispatch');
+    // console.log('object,yes');
     // e.preventDefault();
     axios
       .get(
         `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${this.state.trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=ca6d2aabe958e410ddeb0ce3935f076d `
       )
-      .then(res => {
+      .then((res) => {
         dispatch({
           type: 'SEARCH_TRACKS',
-          payload: res.data.message.body.track_list
+          payload: res.data.message.body.track_list,
         });
-        // console.log(res.data.message.body.track_list);
+        console.log(res.data);
         this.setState({ trackTitle: '' });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  onChange = ({ currentTarget: input }) => {
+    const trackTitle = input.value;
+    this.setState({ trackTitle });
   };
   render() {
     return (
-      <Card borderd="{false}">
+      <Card bordered={true}>
         <Consumer>
-          {value => {
+          {(value) => {
             const { dispatch } = value;
             return (
               <div>

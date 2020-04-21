@@ -94,7 +94,8 @@ Changing state by using the dispatch redux property
 export class Provider extends Component{
   state={
     data:[]
-    dispatch:action => this.setState(state => reducer(state,action)) // you have to define or use this element in other file with the same 'type' component in it and after that help of payload we can change the state.
+    dispatch:action => this.setState(state => reducer(state,action))
+     // you have to define or use this element in other file with the same 'type' component in it and after that help of payload we can change the state.
   };
   componentDidMound(){
     //if you want ot change state in file by 'setState'
