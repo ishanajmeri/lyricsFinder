@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { animated, useTransition, config } from 'react-spring';
 import './styles.css';
-import { Typography } from 'antd';
 
 const images = [
   ({ style }) => (
