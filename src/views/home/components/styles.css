@@ -1,8 +1,29 @@
 .gallery {
-  width: 100%;
+  width: auto;
   height: 100vh;
 }
-
+.gallery-directions {
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  color: #fff;
+  z-index: 50;
+  position: sticky;
+  padding: 40px;
+  top: 200px;
+  left: 32vw;
+  font-weight: 1000;
+  font-size: 5vw;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+@media screen and (max-width: 720px) {
+  .gallery-directions {
+    left: 10vw;
+    font-size: 12vw;
+  }
+  .gallery img {
+    width: 80vh;
+  }
+}
 .gallery img {
   width: 100%;
   position: fixed;

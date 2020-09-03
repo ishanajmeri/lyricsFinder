@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { animated, useTransition, config } from 'react-spring';
 import './styles.css';
+import { Typography } from 'antd';
 
 const images = [
   ({ style }) => (
@@ -41,6 +42,7 @@ const FrontImages = () => {
 
   return (
     <div className="gallery">
+      <div className="gallery-directions">Music is Evrything!</div>
       {transitions.map(({ item, props, key }) => {
         const Image = images[item];
         return <Image key={key} style={props} />;
