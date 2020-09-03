@@ -1,12 +1,12 @@
 import React from 'react';
 import { Layout } from 'antd';
-import Navbar from './navbar';
+// import Navbar from './navbar';
 
 const MainLayout = (props) => {
   return (
     <div>
       <Layout>
-        <Navbar />
+        {/* <Navbar /> */}
         <main>
           {/* {childern} */}
           {props.children}
