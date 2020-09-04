@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { API_KEY, OAuth } from './content';
 const Context = React.createContext();
 
 const reducer = (state, action) => {
@@ -25,12 +26,17 @@ export class Provider extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=ca6d2aabe958e410ddeb0ce3935f076d `
-      )
+      // .get(
+      //   `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${API_KEY} `
+      // )
+      .get(`https://api.spotify.com/v1/browse/new-releases?limit=10`, {
+        headers: {
+          Authorization: `Bearer ${OAuth}`,
+        },
+      })
       .then((res) => {
         // console.log(res.data);
-        // this.setState({ track_list: res.data.message.body.track_list });
+        this.setState({ track_list: res.data.albums.items });
       })
       .catch((err) => console.log(err, 'error'));
   }

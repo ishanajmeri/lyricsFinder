@@ -14,6 +14,7 @@
   font-size: 5vw;
   will-change: transform, opacity;
   overflow: hidden;
+  cursor: default;
 }
 @media screen and (max-width: 720px) {
   .gallery-directions {

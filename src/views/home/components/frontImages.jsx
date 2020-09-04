@@ -1,28 +1,16 @@
 import React, { useState } from 'react';
-import { animated, useTransition, config } from 'react-spring';
+import { animated, useTransition, config, useSpring } from 'react-spring';
 import './styles.css';
 
 const images = [
   ({ style }) => (
-    <animated.img
-      src="https://neobeat.qodeinteractive.com/wp-content/uploads/2020/04/new-landing-1.jpg"
-      alt="Mountains"
-      style={style}
-    />
+    <animated.img src="./new-landing-1.jpg" alt="Mountains" style={style} />
   ),
   ({ style }) => (
-    <animated.img
-      src="https://neobeat.qodeinteractive.com/wp-content/uploads/2020/04/landing-rev-first-2.jpg"
-      alt="Beach"
-      style={style}
-    />
+    <animated.img src="./new-landing-3.jpg" alt="Beach" style={style} />
   ),
   ({ style }) => (
-    <animated.img
-      src="https://neobeat.qodeinteractive.com/wp-content/uploads/2020/04/new-landing-2.jpg"
-      alt="Desert"
-      style={style}
-    />
+    <animated.img src="./new-landing-2.jpg" alt="Desert" style={style} />
   ),
 ];
 
@@ -41,7 +29,8 @@ const FrontImages = () => {
 
   return (
     <div className="gallery">
-      <div className="gallery-directions">Music is Evrything!</div>
+      {/* <div className="gallery-directions">Music is Evrything!</div> */}
+      <Line />
       {transitions.map(({ item, props, key }) => {
         const Image = images[item];
         return <Image key={key} style={props} />;
@@ -51,3 +40,28 @@ const FrontImages = () => {
 };
 
 export default FrontImages;
+
+const calc = (x, y) => [
+  -(y - window.innerHeight / 2) / 20,
+  (x - window.innerWidth / 2) / 20,
+  1.1,
+];
+const trans = (x, y, s) =>
+  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+
+function Line() {
+  const [props, set] = useSpring(() => ({
+    xys: [0, 0, 1],
+    config: { mass: 5, tension: 350, friction: 40 },
+  }));
+  return (
+    <animated.p
+      className="gallery-directions"
+      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+      onMouseLeave={() => set({ xys: [0, 0, 1] })}
+      style={{ transform: props.xys.interpolate(trans) }}
+    >
+      Music is Evrything!
+    </animated.p>
+  );
+}

@@ -1,0 +1,3 @@
+export const API_KEY = 'ca6d2aabe958e410ddeb0ce3935f076d';
+export const OAuth =
+  'BQB6wl7mhDqmlU8c7lvPYBUYH6xS8wvBNHIR8IdXr4Malpi7uE8wQMApPi1bVmNAQK0LhZMO7fc7ygWP_tSX-bhVe34C0rkLoQ5xMu_Nb6s707fk_kcL3MvfBUcBtkpL7ysmhkCNTf4whqkjvXQpl_XQuoDkROs';

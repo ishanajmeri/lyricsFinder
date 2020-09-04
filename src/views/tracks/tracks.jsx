@@ -17,6 +17,7 @@ class Tracks extends Component {
         <Consumer>
           {(value) => {
             const { track_list } = value;
+            console.log(track_list);
             if (track_list === undefined || track_list.length === 0) {
               return <Loading />;
             } else {
@@ -24,9 +25,9 @@ class Tracks extends Component {
                 <React.Fragment>
                   <Card bordered={false}>
                     <Row>
-                      {track_list.map((item) => (
+                      {/* {track_list.map((item) => (
                         <Track key={item.track.track_id} track={item.track} />
-                      ))}
+                      ))} */}
                     </Row>
                   </Card>
                 </React.Fragment>
