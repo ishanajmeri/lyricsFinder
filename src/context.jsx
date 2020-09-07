@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { API_KEY, OAuth } from './content';
+import request from 'request';
+import { API_KEY, OAuth, ClientID, ClientSecret } from './content';
 const Context = React.createContext();
 
 const reducer = (state, action) => {
@@ -25,20 +26,38 @@ export class Provider extends Component {
   };
 
   componentDidMount() {
-    axios
-      // .get(
-      //   `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${API_KEY} `
-      // )
-      .get(`https://api.spotify.com/v1/browse/new-releases?limit=10`, {
-        headers: {
-          Authorization: `Bearer ${OAuth}`,
-        },
-      })
-      .then((res) => {
-        // console.log(res.data);
-        this.setState({ track_list: res.data.albums.items });
-      })
-      .catch((err) => console.log(err, 'error'));
+    var authOptions = {
+      url: 'https://accounts.spotify.com/api/token',
+      headers: {
+        Authorization:
+          'Basic ' +
+          new Buffer(ClientID + ':' + ClientSecret).toString('base64'),
+      },
+      form: {
+        grant_type: 'client_credentials',
+      },
+      json: true,
+    };
+    request.post(authOptions, function (error, response, body) {
+      if (!error && response.statusCode === 200) {
+        // const result = response.json({ token: body.access_token });
+        console.log(response.body.access_token, 'reuslt');
+      }
+    });
+    // axios
+    //   // .get(
+    //   //   `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${API_KEY} `
+    //   // )
+    //   .get(`https://api.spotify.com/v1/browse/new-releases?limit=10`, {
+    //     headers: {
+    //       Authorization: `Bearer ${OAuth}`,
+    //     },
+    //   })
+    //   .then((res) => {
+    //     // console.log(res.data);
+    //     this.setState({ track_list: res.data.albums.items });
+    //   })
+    //   .catch((err) => console.log(err, 'error'));
   }
   render() {
     return (
