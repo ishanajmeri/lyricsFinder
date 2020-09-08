@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
-import Track from './track';
+// import Track from './track';
 import { Card, Typography, Row } from 'antd';
 import Loading from './components/loading';
 import Zoom from 'react-reveal/Zoom';

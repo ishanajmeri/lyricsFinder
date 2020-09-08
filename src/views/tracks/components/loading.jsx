@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { SVG, percentage, elastic } from 'react-tweenful';
-import { Card } from 'antd';
 
 const circles = new Array(10).fill(0).map((_e, i) => ({
   loop: true,
