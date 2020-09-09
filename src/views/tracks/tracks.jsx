@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
 import Track from './track';
+import _ from 'lodash';
 import { Card, Typography, Row } from 'antd';
 import Loading from './components/loading';
 import Zoom from 'react-reveal/Zoom';
@@ -10,7 +11,7 @@ class Tracks extends Component {
   state = {};
   render() {
     return (
-      <Card bordered={false} style={{ backgroundColor: '#7b7b7b' }}>
+      <Card bordered={false} style={{ backgroundColor: '#282828' }}>
         <h1 style={{ textAlign: 'center', color: 'white' }}>
           <strong>
             <Zoom>Recent Release</Zoom>
@@ -20,15 +21,17 @@ class Tracks extends Component {
           {(value) => {
             const { track_list } = value;
             // console.log(track_list);
+            const data = _.chunk(track_list, 3);
+            console.log(data);
             if (track_list === undefined || track_list.length === 0) {
               return <Loading />;
             } else {
               return (
                 <React.Fragment>
-                  <Card bordered={false} style={{ backgroundColor: '#7b7b7b' }}>
+                  <Card bordered={false} style={{ backgroundColor: '#282828' }}>
                     {/* <Row> */}
-                    {/* {track_list.map((item) => (
-                        <Track key={item.track.track_id} track={item.track} />
+                    {/* {data.map((item) => (
+                        <Track key={} track={item.track} />
                       ))} */}
                     <Track />
                     {/* </Row> */}
