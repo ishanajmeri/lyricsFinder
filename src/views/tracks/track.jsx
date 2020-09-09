@@ -1,34 +1,57 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Col } from 'antd';
+import { Card, Col, Row } from 'antd';
 
 const Track = (props) => {
   const { track } = props;
   return (
-    <Col span={11}>
-      <Card.Grid
-        style={{
-          width: '360px',
-          height: '192px',
-          borderRadius: '16px',
-          marginRight: '24px',
-          boxShadow: '5px 8px 24px 5px rgba(208, 216, 243, 0.6)',
-        }}
-      >
-        <h5>{track.track_name}</h5>
-        <p>
-          <strong>Track</strong>:{track.artist_name}
-          <br />
-          <strong>Album</strong>: {track.album_name}
-        </p>
-        <Link
-          to={`lyrics/track/${track.track_id}`}
-          className="btn btn-dark btn-block"
+    <Row justify="center">
+      <Col span={6}>
+        <Card
+          bordered={false}
+          hoverable
+          style={{ width: 300, padding: '0', borderRadius: 15 }}
+          bodyStyle={{ padding: 0 }}
         >
-          View Lyrics
-        </Link>
-      </Card.Grid>
-    </Col>
+          <img
+            alt="example"
+            style={{ height: 300, width: 300, borderRadius: 15 }}
+            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+          />
+        </Card>
+        <h3 style={{ color: 'white' }}>song name</h3>
+      </Col>
+      <Col span={6} offset={2} style={{ paddingTop: 45 }}>
+        <Card
+          bordered={false}
+          hoverable
+          style={{ width: 300, padding: '0', borderRadius: 15 }}
+          bodyStyle={{ padding: 0 }}
+        >
+          <img
+            alt="example"
+            style={{ height: 300, width: 300, borderRadius: 15 }}
+            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+          />
+        </Card>
+        <h3 style={{ color: 'white' }}>song name</h3>
+      </Col>
+      <Col span={6} offset={2}>
+        <Card
+          bordered={false}
+          hoverable
+          style={{ width: 300, padding: '0', borderRadius: 15 }}
+          bodyStyle={{ padding: 0 }}
+        >
+          <img
+            alt="example"
+            style={{ height: 300, width: 300, borderRadius: 15 }}
+            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+          />
+        </Card>
+        <h3 style={{ color: 'white' }}>song name</h3>
+      </Col>
+    </Row>
   );
 };
 

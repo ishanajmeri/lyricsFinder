@@ -22,9 +22,7 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     track_list: [],
-    heading: 'Top 10 Tracks',
     dispatch: (action) => this.setState((state) => reducer(state, action)),
-    token: '',
   };
   componentDidMount() {
     const handlealbums = (data) => {
@@ -47,7 +45,7 @@ export class Provider extends Component {
       if (!error && response.statusCode === 200) {
         // console.log(response.body.access_token);
         axios
-          .get('https://api.spotify.com/v1/browse/new-releases', {
+          .get('https://api.spotify.com/v1/browse/new-releases?limit=10', {
             headers: {
               Accept: 'applications/json',
               'Content-Type': 'application/json',

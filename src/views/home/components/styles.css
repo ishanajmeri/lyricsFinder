@@ -3,13 +3,12 @@
   height: 100vh;
 }
 .gallery-directions {
-  /* background-color: rgba(0, 0, 0, 0.5); */
   color: #fff;
   z-index: 50;
-  position: sticky;
+  position: absolute;
   /* padding: 40px; */
   top: 200px;
-  left: 32vw;
+  /* left: 12vw; */
   font-weight: 1000;
   font-size: 5vw;
   will-change: transform, opacity;
