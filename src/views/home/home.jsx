@@ -29,6 +29,11 @@ const Home = () => {
         <h4 style={{ textAlign: 'center', color: '#FF1493' }}>
           “I’ve had great success being a total idiot.” – Jerry Lewis
         </h4>
+        {/* <Card bordered={false} style={{ backgroundColor: '#282828' }}>
+          <Slider {...settings}>
+           <Artists />
+          </Slider>
+        </Card> */}
         <Card>
           <img
             alt="example"
@@ -36,11 +41,6 @@ const Home = () => {
             style={{ width: 150, height: 150, borderRadius: '50%' }}
           />
         </Card>
-        {/* <Card bordered={false} style={{ backgroundColor: '#282828' }}>
-          <Slider {...settings}>
-           <Artists />
-          </Slider>
-        </Card> */}
       </Card>
     </div>
   );
