@@ -58,7 +58,7 @@ const Track = (props) => {
         </ColMotion>
       </Col>
 
-      <Col span={6} offset={2} style={{ paddingTop: 45 }}>
+      <Col span={6} offset={1} style={{ paddingTop: 45 }}>
         <ColMotion index={2}>
           <Card
             bordered={false}
@@ -89,7 +89,7 @@ const Track = (props) => {
           </h5>
         </ColMotion>
       </Col>
-      <Col span={6} offset={2}>
+      <Col span={6} offset={1}>
         <ColMotion index={3}>
           <Card
             bordered={false}

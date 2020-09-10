@@ -12,7 +12,7 @@ class Tracks extends Component {
   render() {
     return (
       <Card bordered={false} style={{ backgroundColor: '#282828' }}>
-        <h1 style={{ textAlign: 'center', color: 'white' }}>
+        <h1 style={{ textAlign: 'center', color: 'white',fontWeight:1000 }}>
           <strong>
             <Zoom>Recent Release</Zoom>
           </strong>
