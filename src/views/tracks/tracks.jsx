@@ -22,7 +22,7 @@ class Tracks extends Component {
             const { track_list } = value;
             // console.log(track_list);
             const data = _.chunk(track_list, 3);
-            console.log(data);
+            // console.log(data);
             if (track_list === undefined || track_list.length === 0) {
               return <Loading />;
             } else {
@@ -30,10 +30,10 @@ class Tracks extends Component {
                 <React.Fragment>
                   <Card bordered={false} style={{ backgroundColor: '#282828' }}>
                     {/* <Row> */}
-                    {/* {data.map((item) => (
-                        <Track key={} track={item.track} />
-                      ))} */}
-                    <Track />
+                    {data.map((item, index) => (
+                      <Track key={index} track={item} />
+                    ))}
+                    {/* <Track /> */}
                     {/* </Row> */}
                   </Card>
                 </React.Fragment>

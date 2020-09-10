@@ -45,7 +45,7 @@ export class Provider extends Component {
       if (!error && response.statusCode === 200) {
         // console.log(response.body.access_token);
         axios
-          .get('https://api.spotify.com/v1/browse/new-releases?limit=9', {
+          .get('https://api.spotify.com/v1/browse/new-releases?limit=6', {
             headers: {
               Accept: 'applications/json',
               'Content-Type': 'application/json',

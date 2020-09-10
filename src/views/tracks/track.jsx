@@ -14,24 +14,23 @@ function ColMotion(props) {
     config: { duration: 3500 },
     reset: true,
   });
+  const index = Math.floor(Math.random() * 10);
   return (
-    <animated.div
-      style={{ transform: radians.interpolate(interp(props.index)) }}
-    >
+    <animated.div style={{ transform: radians.interpolate(interp(index)) }}>
       {props.children}
     </animated.div>
   );
 }
 
 const Track = (props) => {
-  // const { track } = props;
+  const { track } = props;
+  console.log(track[0]);
   return (
     <Row justify="center">
       <Col span={6}>
         <ColMotion index={1}>
           <Card
             bordered={false}
-            hoverable
             style={{
               width: 300,
               padding: '0',
@@ -42,10 +41,20 @@ const Track = (props) => {
             <img
               alt="example"
               style={{ height: 300, width: 300, borderRadius: 15 }}
-              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+              src={track[0].images[1].url}
             />
           </Card>
-          <h3 style={{ color: 'white' }}>song name</h3>
+          <h3 style={{ color: '#FF1493', fontFamily: 'Alata' }}>
+            <strong>{track[0].name}</strong>
+          </h3>
+          <h5
+            style={{
+              color: 'white',
+              fontFamily: 'Alata',
+            }}
+          >
+            {track[0].artists[0].name}
+          </h5>
         </ColMotion>
       </Col>
 
@@ -53,35 +62,62 @@ const Track = (props) => {
         <ColMotion index={2}>
           <Card
             bordered={false}
-            hoverable
             style={{ width: 300, padding: '0', borderRadius: 15 }}
             bodyStyle={{ padding: 0 }}
           >
             <img
               alt="example"
               style={{ height: 300, width: 300, borderRadius: 15 }}
-              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+              src={track[1].images[1].url}
             />
           </Card>
-          <h3 style={{ color: 'white' }}>song name</h3>
-          <h6 style={{ color: 'white' }}>song artist</h6>
+          <h3
+            style={{
+              color: '#FF1493',
+              fontFamily: 'Alata',
+            }}
+          >
+            <strong>{track[1].name}</strong>
+          </h3>
+          <h5
+            style={{
+              color: 'white',
+              fontFamily: 'Alata',
+            }}
+          >
+            {track[1].artists[0].name}
+          </h5>
         </ColMotion>
       </Col>
       <Col span={6} offset={2}>
         <ColMotion index={3}>
           <Card
             bordered={false}
-            hoverable
             style={{ width: 300, padding: '0', borderRadius: 15 }}
             bodyStyle={{ padding: 0 }}
           >
             <img
               alt="example"
               style={{ height: 300, width: 300, borderRadius: 15 }}
-              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+              src={track[2].images[1].url}
             />
           </Card>
-          <h3 style={{ color: 'white' }}>song name</h3>
+          <h3
+            style={{
+              color: '#FF1493',
+              fontFamily: 'Alata',
+            }}
+          >
+            <strong>{track[2].name}</strong>
+          </h3>
+          <h5
+            style={{
+              color: 'white',
+              fontFamily: 'Alata',
+            }}
+          >
+            {track[2].artists[0].name}
+          </h5>
         </ColMotion>
       </Col>
     </Row>
