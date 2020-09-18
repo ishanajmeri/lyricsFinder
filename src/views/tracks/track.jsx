@@ -2,6 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import { Card, Col, Row } from 'antd';
+import { Helmet } from 'react-helmet';
 
 const interp = (i) => (r) =>
   `translate3d(0, ${5 * Math.sin(r + (i * 2 * Math.PI) / 1.6)}px, 0)`;
@@ -24,9 +25,19 @@ function ColMotion(props) {
 
 const Track = (props) => {
   const { track } = props;
-  // console.log(track[0]);
+  const renderMetaData = () => {
+    return (
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css?family=Alata"
+          rel="stylesheet"
+        />
+      </Helmet>
+    );
+  };
   return (
     <Row justify="center">
+      {renderMetaData()}
       <Col span={6}>
         <ColMotion index={1}>
           <Card

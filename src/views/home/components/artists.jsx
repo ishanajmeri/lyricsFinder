@@ -5,17 +5,25 @@ import request from 'request';
 import { ClientID, ClientSecret } from '../../../content';
 import Zoom from 'react-reveal/Zoom';
 import Slider from 'react-slick';
+import { Helmet } from 'react-helmet';
 
 class Artists extends Component {
   state = { ArtistList: [], value: '', NameList: [] };
   componentDidMount() {
     const handlealbums = (data) => {
-      // console.log(data);
       var Allartist = [];
       var Allname = [];
       for (var i = 0; i < 12; i++) {
         Allartist.push(data[i].images[1].url);
+        // Allname.push(data[i].name);
+      }
+      for (var i = 2; i < 12; i++) {
         Allname.push(data[i].name);
+      }
+      var j = 0;
+      for (var i = 12; i < 14; i++) {
+        Allname.push(data[j].name);
+        j++;
       }
       console.log(Allartist);
       console.log(Allname);
@@ -60,19 +68,30 @@ class Artists extends Component {
   render() {
     const settings = {
       arrows: false,
-      // autoplay: true,
-      // autoplaySpeed: 2000,
+      autoplay: true,
+      autoplaySpeed: 2000,
       pauseOnHover: true,
       infinite: true,
       speed: 500,
       slidesToShow: 5,
       slidesToScroll: 1,
       beforeChange: (current, next) =>
-        this.setState({ value: this.state.NameList[next + 2] }),
+        this.setState({ value: this.state.NameList[next] }),
     };
     const { ArtistList } = this.state;
+    const renderMetaData = () => {
+      return (
+        <Helmet>
+          <link
+            href="https://fonts.googleapis.com/css?family=Alata"
+            rel="stylesheet"
+          />
+        </Helmet>
+      );
+    };
     return (
       <Card bordered={false} style={{ backgroundColor: '#282828' }}>
+        {renderMetaData()}
         <h1 style={{ textAlign: 'center', color: 'white', fontWeight: 1000 }}>
           <strong>
             <Zoom>Artists You May Like</Zoom>
@@ -100,9 +119,9 @@ class Artists extends Component {
           </Slider>
         </Card>
         <Row justify="center">
-          <Zoom>
-            <h3>{this.state.value}</h3>
-          </Zoom>
+          <h3 style={{ fontFamily: 'Alata', color: 'white' }}>
+            {this.state.value}
+          </h3>
         </Row>
       </Card>
     );
