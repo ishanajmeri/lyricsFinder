@@ -24,7 +24,7 @@ function ColMotion(props) {
 
 const Track = (props) => {
   const { track } = props;
-  console.log(track[0]);
+  // console.log(track[0]);
   return (
     <Row justify="center">
       <Col span={6}>
