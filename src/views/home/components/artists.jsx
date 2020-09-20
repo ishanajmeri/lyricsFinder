@@ -25,8 +25,8 @@ class Artists extends Component {
         Allname.push(data[j].name);
         j++;
       }
-      console.log(Allartist);
-      console.log(Allname);
+      // console.log(Allartist);
+      // console.log(Allname);
       this.setState({
         ArtistList: Allartist,
         NameList: Allname,
@@ -59,7 +59,7 @@ class Artists extends Component {
             }
           )
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             handlealbums(res.data.artists);
           });
       }

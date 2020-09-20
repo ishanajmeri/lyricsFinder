@@ -27,6 +27,7 @@
     "react-spring": "^8.0.27",
     "react-tweenful": "^0.1.0",
     "request": "^2.88.2",
+    "resize-observer-polyfill": "^1.5.1",
     "translate": "^1.1.1"
   },
   "scripts": {

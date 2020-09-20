@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import { Consumer } from '../../context';
 import Track from './track';
 import _ from 'lodash';
-import { Card, Typography, Row } from 'antd';
+import { Card } from 'antd';
 import Loading from './components/loading';
 import Zoom from 'react-reveal/Zoom';
 
-const { Title } = Typography;
 class Tracks extends Component {
   state = {};
   render() {
     return (
       <Card bordered={false} style={{ backgroundColor: '#282828' }}>
-        <h1 style={{ textAlign: 'center', color: 'white',fontWeight:1000 }}>
+        <h1 style={{ textAlign: 'center', color: 'white', fontWeight: 1000 }}>
           <strong>
             <Zoom>Recent Release</Zoom>
           </strong>
