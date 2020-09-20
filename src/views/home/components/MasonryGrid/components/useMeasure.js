@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRef, useState, useEffect } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';

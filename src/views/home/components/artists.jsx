@@ -17,11 +17,11 @@ class Artists extends Component {
         Allartist.push(data[i].images[1].url);
         // Allname.push(data[i].name);
       }
-      for (var i = 2; i < 12; i++) {
+      for (i = 2; i < 12; i++) {
         Allname.push(data[i].name);
       }
       var j = 0;
-      for (var i = 12; i < 14; i++) {
+      for (i = 12; i < 14; i++) {
         Allname.push(data[j].name);
         j++;
       }

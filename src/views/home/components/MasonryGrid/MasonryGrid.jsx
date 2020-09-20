@@ -6,6 +6,7 @@ import useMeasure from './components/useMeasure.js';
 import useMedia from './components/useMedia.js';
 import data from './components/data';
 import './components/styles.css';
+
 function MasonryGrid() {
   const columns = useMedia(
     ['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)'],
@@ -50,7 +51,7 @@ function MasonryGrid() {
       style={{ backgroundColor: '#282828', padding: '0 60px' }}
     >
       <Row>
-        <Col span={8}>
+        <Col span={7} offset={1}>
           <img
             src="https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             alt="cf"
