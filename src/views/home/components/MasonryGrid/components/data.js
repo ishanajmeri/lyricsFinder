@@ -1,33 +1,42 @@
+const Imgheight = [400, 350, 400, 350];
+const Imgheight1 = [300, 250, 300, 250];
+
 export default [
-  // {
-  //   css:
-  //     'https://images.pexels.com/photos/416430/pexels-photo-416430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  //   height: 150,
-  // },
+  {
+    css:
+      'https://images.pexels.com/photos/416430/pexels-photo-416430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+    width: Imgheight1[Math.floor(Math.random() * Imgheight1.length)],
+  },
   {
     css:
       'https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    height: 600,
+    height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+    width: Imgheight1[Math.floor(Math.random() * Imgheight1.length)],
   },
   {
     css:
       'https://images.pexels.com/photos/911738/pexels-photo-911738.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    height: 600,
+    height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+    width: Imgheight1[Math.floor(Math.random() * Imgheight1.length)],
   },
   {
     css:
       'https://images.pexels.com/photos/358574/pexels-photo-358574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    height: 600,
+    height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+    width: Imgheight1[Math.floor(Math.random() * Imgheight1.length)],
   },
   {
     css:
       'https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    height: 600,
+    height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+    width: Imgheight1[Math.floor(Math.random() * Imgheight1.length)],
   },
   {
     css:
       'https://images.pexels.com/photos/96381/pexels-photo-96381.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    height: 600,
+    height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+    width: Imgheight1[Math.floor(Math.random() * Imgheight1.length)],
   },
   // {
   //   css:
@@ -37,7 +46,8 @@ export default [
   {
     css:
       'https://images.pexels.com/photos/227675/pexels-photo-227675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    height: 600,
+    height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+    width: Imgheight1[Math.floor(Math.random() * Imgheight1.length)],
   },
   // {
   //   css:
@@ -47,7 +57,8 @@ export default [
   {
     css:
       'https://images.pexels.com/photos/327482/pexels-photo-327482.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    height: 400,
+    height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+    width: Imgheight1[Math.floor(Math.random() * Imgheight1.length)],
   },
   // {
   //   css:
@@ -62,7 +73,8 @@ export default [
   {
     css:
       'https://images.pexels.com/photos/310452/pexels-photo-310452.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    height: 400,
+    height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+    width: Imgheight1[Math.floor(Math.random() * Imgheight1.length)],
   },
   // {
   //   css:

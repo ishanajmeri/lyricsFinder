@@ -1,4 +1,4 @@
-import { Card, Row } from 'antd';
+import { Card, Col, Row } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { useTransition, a } from 'react-spring';
 import shuffle from 'lodash/shuffle';
@@ -9,7 +9,7 @@ import './components/styles.css';
 function MasonryGrid() {
   const columns = useMedia(
     ['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)'],
-    [3, 3, 3],
+    [5, 3, 6],
     2
   );
   // Hook2: Measure the width of the container element
@@ -26,7 +26,13 @@ function MasonryGrid() {
       (width / columns) * column,
       (heights[column] += child.height / 2) - child.height / 2,
     ]; // X = container width / number of columns * column index, Y = it's just the height of the current column
-    return { ...child, xy, width: width / columns, height: child.height / 2 };
+    return {
+      ...child,
+      xy,
+      // width: width / columns,
+      height: child.height / 2,
+      width: child.width,
+    };
   });
   // Hook5: Turn the static grid values into animated transitions, any addition, removal or change will be animated
   const transitions = useTransition(gridItems, (item) => item.css, {
@@ -43,21 +49,41 @@ function MasonryGrid() {
       bordered={false}
       style={{ backgroundColor: '#282828', padding: '0 60px' }}
     >
-      <div {...bind} className="list" style={{ height: Math.max(...heights) }}>
-        {transitions.map(({ item, props: { xy, ...rest }, key }) => (
-          <a.div
-            key={key}
-            style={{
-              transform: xy.interpolate(
-                (x, y) => `translate3d(${x}px,${y}px,0)`
-              ),
-              ...rest,
-            }}
+      <Row>
+        <Col span={8}>
+          <img
+            src="https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt="cf"
+            style={{ height: '100%', width: '100%' }}
+          />
+        </Col>
+        <Col span={12}>
+          <div
+            {...bind}
+            className="list"
+            style={{ height: Math.max(...heights) }}
           >
-            <img src={item.css} alt="ex" style={{ height: item.height }} />
-          </a.div>
-        ))}
-      </div>
+            {transitions.map(({ item, props: { xy, ...rest }, key }) => (
+              <a.div
+                key={key}
+                style={{
+                  transform: xy.interpolate(
+                    (x, y) => `translate3d(${x}px,${y}px,0)`
+                  ),
+                  padding: '15px',
+                  ...rest,
+                }}
+              >
+                <img
+                  src={item.css}
+                  alt="ex"
+                  style={{ height: item.height, width: item.width }}
+                />
+              </a.div>
+            ))}
+          </div>
+        </Col>
+      </Row>
     </Card>
   );
 }
