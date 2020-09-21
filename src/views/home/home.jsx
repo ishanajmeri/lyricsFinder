@@ -10,9 +10,9 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <TopImages />
-        <Tracks />
-        <Artists />
+        {/* <TopImages /> */}
+        {/* <Tracks /> */}
+        {/* <Artists /> */}
         <MasonryGrid />
       </div>
     );

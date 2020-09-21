@@ -1,13 +1,64 @@
 import { Card, Col, Row } from 'antd';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { useTransition, a } from 'react-spring';
 import shuffle from 'lodash/shuffle';
 import useMeasure from './components/useMeasure.js';
 import useMedia from './components/useMedia.js';
-import data from './components/data';
+import axios from 'axios';
+import request from 'request';
 import './components/styles.css';
+import { ClientID, ClientSecret } from '../../../../content.js';
+
+const Imgheight = [350, 320, 360, 300, 400];
+const Imgwidth = [150, 180, 170, 180];
 
 function MasonryGrid() {
+  const [items, set] = useState([]);
+
+  React.useEffect(() => {
+    const handlealbums = (data) => {
+      var Allartist = [];
+      for (var i = 0; i < 9; i++) {
+        Allartist.push({
+          css: data[i].images[0].url,
+          height: Imgheight[Math.floor(Math.random() * Imgheight.length)],
+          width: Imgwidth[Math.floor(Math.random() * Imgwidth.length)],
+        });
+      }
+      console.log(Allartist);
+      // this.setState({ data: Allartist });
+      set(Allartist);
+      // set(alldata);
+    };
+    var authOptions = {
+      url: 'https://accounts.spotify.com/api/token',
+      headers: {
+        Authorization:
+          'Basic ' +
+          new Buffer(ClientID + ':' + ClientSecret).toString('base64'),
+      },
+      form: {
+        grant_type: 'client_credentials',
+      },
+      json: true,
+    };
+    request.post(authOptions, function (error, response, body) {
+      if (!error && response.statusCode === 200) {
+        axios
+          .get('https://api.spotify.com/v1/browse/featured-playlists?limit=9', {
+            headers: {
+              Accept: 'applications/json',
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${response.body.access_token}`,
+            },
+          })
+          .then((res) => {
+            // console.log(res.data.playlists.items);
+            handlealbums(res.data.playlists.items);
+          });
+      }
+    });
+  }, []);
   const columns = useMedia(
     ['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)'],
     [5, 3, 6],
@@ -16,7 +67,6 @@ function MasonryGrid() {
   // Hook2: Measure the width of the container element
   const [bind, { width }] = useMeasure();
   // Hook3: Hold items
-  const [items, set] = useState(data);
   // Hook4: shuffle data every 2 seconds
   useEffect(() => void setInterval(() => set(shuffle), 2000), []);
   // Form a grid of stacked items using width & columns we got from hooks 1 & 2
@@ -30,7 +80,6 @@ function MasonryGrid() {
     return {
       ...child,
       xy,
-      // width: width / columns,
       height: child.height / 2,
       width: child.width,
     };
@@ -44,21 +93,20 @@ function MasonryGrid() {
     config: { mass: 5, tension: 500, friction: 100 },
     trail: 25,
   });
-  // Ren
   return (
     <Card
       bordered={false}
       style={{ backgroundColor: '#282828', padding: '0 60px' }}
     >
       <Row>
-        <Col span={7} offset={1}>
+        <Col span={6} offset={1}>
           <img
             src="https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             alt="cf"
-            style={{ height: '100%', width: '100%' }}
+            style={{ height: '100%', width: '100%', borderRadius: '20px' }}
           />
         </Col>
-        <Col span={12}>
+        <Col span={12} offset={1}>
           <div
             {...bind}
             className="list"
@@ -67,6 +115,7 @@ function MasonryGrid() {
             {transitions.map(({ item, props: { xy, ...rest }, key }) => (
               <a.div
                 key={key}
+                className="images"
                 style={{
                   transform: xy.interpolate(
                     (x, y) => `translate3d(${x}px,${y}px,0)`
@@ -88,5 +137,4 @@ function MasonryGrid() {
     </Card>
   );
 }
-
 export default MasonryGrid;
