@@ -61,9 +61,9 @@ function Grid(props) {
       <Row>
         <Col span={6} offset={1}>
           <img
-            src="https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            src="./new-landing-4.jpg"
             alt="cf"
-            style={{ height: '100%', width: '100%', borderRadius: '20px' }}
+            style={{ height: '100%', width: 'auto', borderRadius: '20px' }}
           />
         </Col>
         <Col span={12} offset={1}>
