@@ -5,7 +5,7 @@ import Grid from './components/grid';
 import { ClientID, ClientSecret } from '../../../../content.js';
 
 const Imgheight = [350, 320, 360, 300, 400];
-const Imgwidth = [150, 180, 170, 180];
+const Imgwidth = [150, 175, 170, 165];
 class Main extends Component {
   state = { data: [] };
 

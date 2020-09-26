@@ -90,7 +90,10 @@ class Artists extends Component {
       );
     };
     return (
-      <Card bordered={false} style={{ backgroundColor: '#282828' }}>
+      <Card
+        bordered={false}
+        style={{ backgroundColor: '#282828', paddingTop: '40px' }}
+      >
         {renderMetaData()}
         <h1 style={{ textAlign: 'center', color: 'white', fontWeight: 1000 }}>
           <strong>
